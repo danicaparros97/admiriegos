@@ -20,6 +20,21 @@ class User extends Authenticatable
         'nombre', 'apellidos','dni','telefono','idSector', 'email', 'password',
     ];
 
+    public function sectores()
+    {
+        return $this->belongsTo('App\Sector');
+    }
+
+    public function incidencias()
+    {
+        return $this->hasMany('App\Incidencia');
+    }
+
+    public function tareas()
+    {
+        return $this->belongsToMany('App\Tarea');
+    }
+
     /**
      * The attributes that should be hidden for arrays.
      *
