@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Middleware;
+use Illuminate\Support\Facades\Auth;
 
 use Closure;
 
@@ -15,9 +16,9 @@ class ComprobarRol
      */
     public function handle($request, Closure $next)
     {
-        if ($request->rol = 'Encargado') {
-            return redirect('admin');
+        if (Auth::user()->rol == 'Encargado') {
+            return $next($request);
         }
-        return $next($request);
+        return redirect('/');
     }
 }
