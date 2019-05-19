@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
+use App\Tarea;
+use App\User;
 
 class TareasController extends Controller
 {
@@ -13,7 +16,9 @@ class TareasController extends Controller
      */
     public function index()
     {
-        //
+        $tareas = Tarea::all();
+
+        return view('encargado.tareas')->with('tareas', $tareas);
     }
 
     /**

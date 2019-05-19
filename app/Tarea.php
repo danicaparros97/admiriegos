@@ -10,6 +10,6 @@ class Tarea extends Model
 
     public function empleados()
     {
-        return $this->belongsToMany('App\User');
+        return $this->hasMay('App\User');
     }
 }

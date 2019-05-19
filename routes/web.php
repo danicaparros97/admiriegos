@@ -17,8 +17,13 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::prefix('/administracion')->middleware('rol')->group(function(){
+Route::prefix('/encargado')->middleware('rol')->group(function(){
     Route::get('/', function () {
-        return view('principal.index');
+        return view('index');
+    });
+
+    Route::get('tareas', 'TareasController@index');
+    Route::get('map', function(){
+        return view('encargado.mapa');
     });
 });

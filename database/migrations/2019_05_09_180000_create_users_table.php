@@ -23,6 +23,10 @@ class CreateUsersTable extends Migration
 
             $table->unsignedBigInteger('idSector');
             $table->foreign('idSector')->references('id')->on('sectors')->onDelete('cascade');
+            
+            $table->unsignedBigInteger('idTarea');
+            $table->foreign('idTarea')->references('id')->on('tareas')->onDelete('cascade');
+
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

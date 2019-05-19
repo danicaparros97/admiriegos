@@ -19,6 +19,7 @@ class EmpleadosSeeder extends Seeder
             "telefono" => "654987123",
             "rol" => "Encargado",
             "idSector" => 1,
+            "idTarea" => 3,
             "email" => "jluis@admiriegos.com",
             "password" => Hash::make("Jl15052019")
         ]);
