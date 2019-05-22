@@ -30,6 +30,9 @@ class User extends Authenticatable
         return $this->hasMany('App\Incidencia');
     }
 
+    public function tareas(){
+        return $this->belongsTo('App\Tarea');
+    }
 
     /**
      * The attributes that should be hidden for arrays.

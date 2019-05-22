@@ -17,13 +17,18 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::prefix('/encargado')->middleware('rol')->group(function(){
+Route::prefix('/indice')->group(function(){
     Route::get('/', function () {
-        return view('index');
+        return view('principal.calendario');
     });
 
     Route::get('tareas', 'TareasController@index');
     Route::get('map', function(){
         return view('encargado.mapa');
     });
+    Route::get('calendario-tareas', function () {
+        return view('principal.calendario');
+    });
+
+    Route::get('empleados', 'EmpleadosController@index');
 });

@@ -1,6 +1,6 @@
-@extends('index')
+@extends('principal.index')
 
-@section('content')
+@section('contenido')
 <ul class="list-group list-group-flush">
     @foreach ($tareas as $tarea)
     <li class="list-group-item">{{ $tarea->descripcion}}</li>

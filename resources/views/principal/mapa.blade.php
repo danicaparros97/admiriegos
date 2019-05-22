@@ -1,5 +1,5 @@
-@extends('index')
+@extends('principal.index')
 
-@section('content')
+@section('contenido')
     <div id="map" style="height: 100%"></div>
 @endsection
