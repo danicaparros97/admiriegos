@@ -24,7 +24,7 @@ Route::prefix('/indice')->group(function(){
 
     Route::get('tareas', 'TareasController@index');
     Route::get('map', function(){
-        return view('encargado.mapa');
+        return view('principal.mapa');
     });
     Route::get('calendario-tareas', function () {
         return view('principal.calendario');
