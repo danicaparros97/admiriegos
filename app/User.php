@@ -17,7 +17,7 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellidos','dni','telefono','idSector', 'email', 'password',
+        'nombre', 'apellidos','dni','telefono','sector_id', 'tarea_id', 'email', 'password',
     ];
 
     public function sectores()

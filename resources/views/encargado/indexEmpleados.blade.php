@@ -21,7 +21,7 @@
                     <td>{{ $empleado->dni }}</td>
                     <td>{{ $empleado->telefono }}</td>
                     <td>{{ $empleado->rol }}</td>
-                    <td>{{ $empleado->idSector }}</td>
+                    <td>{{ $empleado->sector_id }}</td>
                     <td>{{ $empleado->email }}</td>
                 </tr>
             @endforeach

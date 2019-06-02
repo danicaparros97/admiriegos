@@ -17,8 +17,8 @@ class CreateIncidenciasTable extends Migration
             $table->bigIncrements('id');
             $table->string('descripcion');
             $table->date('fecha_incidencia');
-            $table->unsignedBigInteger('idEmpleado');
-            $table->foreign('idEmpleado')->references('id')->on('empleados')->onDelete('cascade');
+            $table->unsignedBigInteger('user_id');
+            $table->foreign('user_id')->references('id')->on('empleados')->onDelete('cascade');
             $table->boolean('leida');
             $table->timestamps();
         });

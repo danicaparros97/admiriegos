@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\User;
+use App\Sector;
 class EmpleadosController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class EmpleadosController extends Controller
     {
         $empleados = User::all();
         
-        return view('empleados.indexEmpleados')->with('empleados', $empleados);
+        return view('encargado.indexEmpleados')->with('empleados', $empleados);
     }
 
     /**
@@ -25,7 +26,8 @@ class EmpleadosController extends Controller
      */
     public function create()
     {
-        //
+        $sectores = Sector::all();
+        return view('formularios.crearEmpleado')->with('sectores', $sectores);
     }
 
     /**
@@ -36,7 +38,7 @@ class EmpleadosController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
     }
 
     /**
@@ -81,6 +83,6 @@ class EmpleadosController extends Controller
      */
     public function destroy($id)
     {
-        //
+
     }
 }

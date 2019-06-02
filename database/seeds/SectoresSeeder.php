@@ -14,7 +14,7 @@ class SectoresSeeder extends Seeder
     {
         DB::table('sectors')->insert([
             "nombre" => "Sector 01",
-            "idFinca" => 1
+            "finca_id" => 1
         ]);
     }
 }

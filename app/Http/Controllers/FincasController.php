@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Finca;
 
 class FincasController extends Controller
 {
@@ -13,7 +14,8 @@ class FincasController extends Controller
      */
     public function index()
     {
-        //
+        $fincas = Finca::all();
+        return view('encargado.fincas')->with('fincas', $fincas);
     }
 
     /**
@@ -23,7 +25,7 @@ class FincasController extends Controller
      */
     public function create()
     {
-        //
+        return view('formularios.crearFinca');
     }
 
     /**
@@ -34,7 +36,9 @@ class FincasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $finca = Finca::create($request->all());
+
+        return redirect('/enc/fincas');
     }
 
     /**
@@ -79,6 +83,10 @@ class FincasController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $finca = Finca::find($id);
+
+        $finca->delete();
+
+        return redirect('/enc/fincas');
     }
 }

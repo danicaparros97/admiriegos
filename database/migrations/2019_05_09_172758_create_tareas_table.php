@@ -18,7 +18,7 @@ class CreateTareasTable extends Migration
             $table->string('descripcion');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');
-            $table->boolean('finalizada');
+            $table->string('estado');
             $table->timestamps();
         });
     }

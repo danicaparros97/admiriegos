@@ -28,7 +28,7 @@ class TareasController extends Controller
      */
     public function create()
     {
-        //
+        return view('formularios.crearTarea');
     }
 
     /**
@@ -39,7 +39,9 @@ class TareasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $tarea = Tarea::create($request->all());
+
+        return redirect('/enc/tareas');
     }
 
     /**

@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Sector;
+use App\Finca;
 
 class SectoresController extends Controller
 {
@@ -15,7 +16,9 @@ class SectoresController extends Controller
      */
     public function index()
     {
-        //
+        $sectores = Sector::all();
+
+        return view('encargado.sectores')->with('sectores', $sectores);
     }
 
     /**
@@ -25,7 +28,9 @@ class SectoresController extends Controller
      */
     public function create()
     {
-        //
+        $fincas = Finca::all();
+
+        return view('formularios.crearSector')->with('fincas', $fincas);
     }
 
     /**
@@ -36,7 +41,9 @@ class SectoresController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $sector = Sector::create($request->all());
+
+        return redirect('/enc/sectores');
     }
 
     /**
