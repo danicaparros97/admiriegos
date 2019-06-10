@@ -16,9 +16,9 @@ class TareasController extends Controller
      */
     public function index()
     {
-        $tareas = Tarea::all();
+        $tareas = DB::table('tareas')->paginate(10);
 
-        return view('encargado.tareas')->with('tareas', $tareas);
+        return view('administrador.tareas')->with('tareas', $tareas);
     }
 
     /**
@@ -41,7 +41,16 @@ class TareasController extends Controller
     {
         $tarea = Tarea::create($request->all());
 
-        return redirect('/enc/tareas');
+        return redirect('/administracion');
+    }
+
+    public function finalizarTarea($id){
+        $tarea = Tarea::find($id);
+        if ($tarea->estado == 'activa') {
+            $tarea->estado = 'finalizada';
+        }
+        $tarea->save();
+        return redirect('/administracion');
     }
 
     /**

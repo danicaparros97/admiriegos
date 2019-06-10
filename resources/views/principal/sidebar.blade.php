@@ -12,8 +12,8 @@
         <div id="empleados" class="collapse" aria-labelledby="headingOne" data-parent="#accordionExample">
             <div class="card-body">
                 <ul class="list-group">
-                    <li class="list-item"><a href="/enc/empleados">Ver empleados</a></li>
-                    <li class="list-item"><a href="/enc/empleados/empleado/create">Añadir nuevo empleado</a></li>
+                    <li class="list-item"><a href="/administracion/empleados">Ver empleados</a></li>
+                    <li class="list-item"><a href="/administracion/empleados/empleado/create">Dar de alta un nuevo empleado</a></li>
                 </ul>
             </div>
         </div>
@@ -29,7 +29,7 @@
         </div>
         <div id="tareas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
-                    <li class="list-item"><a href="/enc/tareas/tarea/create">Añadir nueva tarea</a></li>
+                    <li class="list-item"><a href="/administracion/tareas/tarea/create">Añadir nueva tarea</a></li>
             </div>
         </div>
     </div>
@@ -44,8 +44,8 @@
         </div>
         <div id="fincas" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
-                <li class="list-item"><a href="/enc/fincas">Ver fincas</a></li>
-                <li class="list-item"><a href="/enc/fincas/finca/create">Añadir nueva finca</a></li>
+                <li class="list-item"><a href="/administracion/fincas">Ver fincas</a></li>
+                <li class="list-item"><a href="/administracion/fincas/finca/create">Añadir nueva finca</a></li>
             </div>
         </div>
     </div>
@@ -60,8 +60,7 @@
         </div>
         <div id="sectores" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
-                <li class="list-item"><a href="/enc/sectores">Ver sectores</a></li>
-                <li class="list-item"><a href="/enc/sectores/sector/create">Añadir nuevo sector</a></li>
+                <li class="list-item"><a href="/administracion/sectores/sector/create">Añadir nuevo sector</a></li>
             </div>
         </div>
     </div>
@@ -76,7 +75,7 @@
         </div>
         <div id="incidencias" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
-                <li class="list-item"><a href="/enc/incidencias">Ver incidencias</a></li>
+                <li class="list-item"><a href="/administracion/incidencias">Ver incidencias</a></li>
             </div>
         </div>
     </div>

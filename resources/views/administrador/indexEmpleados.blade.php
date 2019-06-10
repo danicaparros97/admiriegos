@@ -11,6 +11,8 @@
                 <th scope="col">Puesto</th>
                 <th scope="col">Sector al que pertenece</th>
                 <th scope="col">E-Mail</th>
+                <th scope="col">Actualizar datos</th>
+                <th scope="col">Dar de baja</th>
             </tr>
         </thead>
         <tbody>
@@ -23,8 +25,15 @@
                     <td>{{ $empleado->rol }}</td>
                     <td>{{ $empleado->sector_id }}</td>
                     <td>{{ $empleado->email }}</td>
+                    <td><a class="btn btn-primary" href="/administracion/empleados/empleado/edit/{{ $empleado->id }}" role="button">Editar información</i></a></td>
+                    <td><a class="btn btn-primary" href="/administracion/empleados/empleado/destroy/{{ $empleado->id }}" role="button">Dar de baja</a></td>
                 </tr>
             @endforeach
         </tbody>
     </table>
+@endsection
+@section('paginador')
+<div class="paginador">
+    {{ $empleados->links() }}
+</div>
 @endsection

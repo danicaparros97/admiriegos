@@ -1,7 +1,7 @@
 @extends('principal.index')
 @section('contenido')
 <div class="container">
-    <form action="/enc/sectores/sector/store" method="post">
+    <form action="/administracion/sectores/sector/store" method="post">
         @csrf
         <div class="form-group">
             <label for="nombre">Nombre</label>

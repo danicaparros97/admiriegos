@@ -1,7 +1,7 @@
 @extends('principal.index')
 @section('contenido')
 <div class="container">
-    <form action="/enc/tareas/tarea/store" method="post">
+    <form action="/administracion/tareas/tarea/store" method="post">
         @csrf
         <div class="form-group">
             <label for="descripcion">Descripcion</label>
@@ -9,9 +9,9 @@
         </div>
         <div class="form-group">
             <label for="fecha_inicio">Fecha Inicio</label>
-            <input type="date" class="form-control" name="fecha_inicio">
+            <input type="date" class="form-control" name="fecha_inicio" id="fecha_inicio">
             <label for="fecha_fin">Fecha Fin</label>
-            <input type="date" class="form-control" name="fecha_fin">
+            <input type="date" class="form-control" name="fecha_fin" id="fecha_fin">
         </div>
         <div class="form-group">
             <label for="estado">Estado</label>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Incidencia extends Model
 {
-    protected $fillable = ['descripcion', 'fecha_incidencia', 'user_id', 'leida'];
+    protected $fillable = ['trabajador', 'descripcion', 'fecha_incidencia', 'user_id', 'estado'];
 
     public function empleados()
     {

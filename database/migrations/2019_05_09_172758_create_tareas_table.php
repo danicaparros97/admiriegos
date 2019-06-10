@@ -15,6 +15,7 @@ class CreateTareasTable extends Migration
     {
         Schema::create('tareas', function (Blueprint $table) {
             $table->bigIncrements('id');
+            $table->string('nombre');
             $table->string('descripcion');
             $table->date('fecha_inicio');
             $table->date('fecha_fin');

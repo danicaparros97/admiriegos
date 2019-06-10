@@ -17,8 +17,7 @@ class SectoresController extends Controller
     public function index()
     {
         $sectores = Sector::all();
-
-        return view('encargado.sectores')->with('sectores', $sectores);
+        return view('administrador.sectores')->with('sectores', $sectores);
     }
 
     /**
@@ -43,7 +42,7 @@ class SectoresController extends Controller
     {
         $sector = Sector::create($request->all());
 
-        return redirect('/enc/sectores');
+        return redirect('/administracion/fincas');
     }
 
     /**
@@ -88,6 +87,8 @@ class SectoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sector = Sector::find($id);
+        $sector->delete();
+        return redirect('/administracion/fincas');
     }
 }

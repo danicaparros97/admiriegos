@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Incidencia;
+
 class IncidenciasController extends Controller
 {
     /**
@@ -23,7 +25,7 @@ class IncidenciasController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,7 +36,15 @@ class IncidenciasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $incidencia = Incidencia::create([
+            'trabajador' => $request['trabajador'],
+            'descripcion' => $request['descripcion'],
+            'fecha_incidencia' => $request['fecha_incidencia'],
+            'user_id' => $request['user_id'],
+            'estado' => $request['estado']
+        ]);
+
+        return redirect('/empleado');
     }
 
     /**

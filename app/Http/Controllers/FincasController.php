@@ -15,7 +15,7 @@ class FincasController extends Controller
     public function index()
     {
         $fincas = Finca::all();
-        return view('encargado.fincas')->with('fincas', $fincas);
+        return view('administrador.fincas')->with('fincas', $fincas);
     }
 
     /**
@@ -38,7 +38,7 @@ class FincasController extends Controller
     {
         $finca = Finca::create($request->all());
 
-        return redirect('/enc/fincas');
+        return redirect('/administracion/fincas');
     }
 
     /**
@@ -60,7 +60,9 @@ class FincasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $finca = Finca::find($id);
+
+        return view('formularios.actualizarFinca')->with('finca', $finca);
     }
 
     /**
@@ -72,7 +74,11 @@ class FincasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $finca = Finca::find($id);
+        $finca->nombre = $request->input('nombre');
+        $finca->localizacion = $request->input('localizacion');
+        $finca->save();
+        return redirect('/administracion/fincas');
     }
 
     /**
@@ -87,6 +93,6 @@ class FincasController extends Controller
 
         $finca->delete();
 
-        return redirect('/enc/fincas');
+        return redirect('/administracion/fincas');
     }
 }

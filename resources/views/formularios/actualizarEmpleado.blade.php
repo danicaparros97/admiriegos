@@ -1,24 +1,30 @@
 @extends('principal.index')
 @section('contenido')
 <div class="container">
-    <form action="/administracion/empleados/empleado/store" method="post">
+    <form action="/administracion/empleados/empleado/update/{{ $datos['empleado']->id }}" method="post">
         @csrf
         <div class="form-group">
             <label for="nombre">Nombre</label>
-            <input type="text" class="form-control" name="nombre" required>
+            <input type="text" class="form-control" name="nombre" value="{{ $datos['empleado']->nombre }}" required>
         </div>
         <div class="form-group">
             <label for="apellidos">Apellidos</label>
-            <input type="text" class="form-control" name="apellidos" required>
+            <input type="text" class="form-control" name="apellidos" value="{{ $datos['empleado']->apellidos }}"
+                required>
         </div>
-
         <div class="form-group">
             <label for="dni">DNI</label>
-            <input type="text" class="form-control" name="dni" required>
+            <input type="text" class="form-control" name="dni" value="{{ $datos['empleado']->dni }}" minlength="9"
+                maxlength="9" required>
         </div>
         <div class="form-group">
-            <label for="email">Teléfono</label>
-            <input type="text" class="form-control" name="telefono" minlength="9" maxlength="9" required>
+            <label for="email">Email</label>
+            <input type="text" class="form-control" name="email" value="{{ $datos['empleado']->email }}" readonly>
+        </div>
+        <div class="form-group">
+            <label for="telefono">Teléfono</label>
+            <input type="text" class="form-control" name="telefono" value="{{ $datos['empleado']->telefono }}"
+                minlength="9" maxlength="9" required>
         </div>
         <div class="form-group">
             <label for="rol">Rol</label>
