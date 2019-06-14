@@ -17,6 +17,7 @@ class TareasSeeder extends Seeder
         $faker = Faker::create();
         for($i=0; $i<20; $i++) {
             Tarea::create([
+                'nombre' => $faker->text($maxNbChars = 20),
                 'descripcion' => $faker->text($maxNbChars = 50),
                 'fecha_inicio' => $faker->dateTimeInInterval($startDate = '- 5 days', $interval = '+ 5 days', $timezone = null),
                 'fecha_fin' => $faker->dateTimeInInterval($startDate = '- 5 days', $interval = '+ 5 days', $timezone = null),

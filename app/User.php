@@ -17,10 +17,10 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'nombre', 'apellidos','dni','telefono','sector_id', 'tarea_id', 'email', 'password',
+        'nombre', 'apellidos', 'dni', 'telefono','rol', 'sector_id', 'tarea_id', 'email', 'password'
     ];
 
-    public function sectores()
+    public function sector()
     {
         return $this->belongsTo('App\Sector');
     }
@@ -30,7 +30,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Incidencia');
     }
 
-    public function tareas(){
+    public function tarea(){
         return $this->belongsTo('App\Tarea');
     }
 

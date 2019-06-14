@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Incidencia;
+
 class IncidenciasController extends Controller
 {
     /**
@@ -13,7 +15,9 @@ class IncidenciasController extends Controller
      */
     public function index()
     {
-        //
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['incidencias' => $incidencias];
+        return view('administrador.incidencias')->with('datos', $datos);
     }
 
     /**
@@ -23,7 +27,7 @@ class IncidenciasController extends Controller
      */
     public function create()
     {
-        //
+
     }
 
     /**
@@ -34,7 +38,15 @@ class IncidenciasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $incidencia = Incidencia::create([
+            'trabajador' => $request['trabajador'],
+            'descripcion' => $request['descripcion'],
+            'fecha_incidencia' => $request['fecha_incidencia'],
+            'user_id' => $request['user_id'],
+            'estado' => $request['estado']
+        ]);
+
+        return redirect('/empleado');
     }
 
     /**
@@ -68,7 +80,13 @@ class IncidenciasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $incidencia = Incidencia::find($id);
+        
+        if ($incidencia->estado == 0) {
+            $incidencia->estado = $request->input('estado');
+        }
+        $incidencia->save();
+        return redirect('/administracion');
     }
 
     /**

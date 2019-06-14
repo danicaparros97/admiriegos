@@ -16,9 +16,9 @@ class ComprobarRol
      */
     public function handle($request, Closure $next)
     {
-        if (Auth::user()->rol == 'Encargado') {
+        if (Auth::user()->rol == 'administrador') {
             return $next($request);
         }
-        return redirect('/');
+        return redirect('/empleado');
     }
 }

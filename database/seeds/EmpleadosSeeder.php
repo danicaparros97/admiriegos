@@ -17,10 +17,10 @@ class EmpleadosSeeder extends Seeder
             "apellidos" => "García Perez",
             "dni" => "21655487E",
             "telefono" => "654987123",
-            "rol" => "Encargado",
+            "rol" => "administrador",
             "sector_id" => 1,
-            "tarea_id" => 3,
-            "email" => "jluis@admiriegos.com",
+            "tarea_id" => 1,
+            "email" => "juan.luis.garcia.perez@admiriegos.com",
             "password" => Hash::make("Jl15052019")
         ]);
     }

@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Finca;
-
+use App\Incidencia;
 class FincasController extends Controller
 {
     /**
@@ -14,8 +14,10 @@ class FincasController extends Controller
      */
     public function index()
     {
-        $fincas = Finca::all();
-        return view('encargado.fincas')->with('fincas', $fincas);
+        $fincas = Finca::paginate(10);
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['fincas' => $fincas, 'incidencias' => $incidencias];
+        return view('administrador.fincas')->with('datos', $datos);
     }
 
     /**
@@ -24,8 +26,10 @@ class FincasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('formularios.crearFinca');
+    {   
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['incidencias' => $incidencias];
+        return view('formularios.crearFinca')->with('datos', $datos);
     }
 
     /**
@@ -38,7 +42,7 @@ class FincasController extends Controller
     {
         $finca = Finca::create($request->all());
 
-        return redirect('/enc/fincas');
+        return redirect('/administracion/fincas');
     }
 
     /**
@@ -60,7 +64,10 @@ class FincasController extends Controller
      */
     public function edit($id)
     {
-        //
+        $finca = Finca::find($id);
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['finca' => $finca, 'incidencias' => $incidencias];
+        return view('formularios.actualizarFinca')->with('datos', $datos);
     }
 
     /**
@@ -72,7 +79,11 @@ class FincasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $finca = Finca::find($id);
+        $finca->nombre = $request->input('nombre');
+        $finca->localizacion = $request->input('localizacion');
+        $finca->save();
+        return redirect('/administracion/fincas');
     }
 
     /**
@@ -87,6 +98,6 @@ class FincasController extends Controller
 
         $finca->delete();
 
-        return redirect('/enc/fincas');
+        return redirect('/administracion/fincas');
     }
 }

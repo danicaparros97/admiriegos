@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Sector;
 use App\Finca;
-
+use App\Incidencia;
 class SectoresController extends Controller
 {
     /**
@@ -17,8 +17,7 @@ class SectoresController extends Controller
     public function index()
     {
         $sectores = Sector::all();
-
-        return view('encargado.sectores')->with('sectores', $sectores);
+        return view('administrador.sectores')->with('sectores', $sectores);
     }
 
     /**
@@ -29,8 +28,9 @@ class SectoresController extends Controller
     public function create()
     {
         $fincas = Finca::all();
-
-        return view('formularios.crearSector')->with('fincas', $fincas);
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['fincas' => $fincas, 'incidencias' => $incidencias];
+        return view('formularios.crearSector')->with('datos', $datos);
     }
 
     /**
@@ -43,7 +43,7 @@ class SectoresController extends Controller
     {
         $sector = Sector::create($request->all());
 
-        return redirect('/enc/sectores');
+        return redirect('/administracion/fincas');
     }
 
     /**
@@ -88,6 +88,8 @@ class SectoresController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $sector = Sector::find($id);
+        $sector->delete();
+        return redirect('/administracion/fincas');
     }
 }
