@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Auth;
 use App\User;
 use App\Sector;
 use App\Tarea;
+use App\Incidencia;
 class EmpleadosController extends Controller
 {
 
@@ -20,9 +21,10 @@ class EmpleadosController extends Controller
      */
     public function index()
     {
-        $empleados = DB::table('empleados')->paginate(10);
-        
-        return view('administrador.indexEmpleados')->with('empleados', $empleados);
+        $empleados = User::paginate(10);
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['empleados' => $empleados, 'incidencias' => $incidencias];
+        return view('administrador.indexEmpleados')->with('datos', $datos);
     }
 
     /**
@@ -34,7 +36,8 @@ class EmpleadosController extends Controller
     {
         $sectores = Sector::all();
         $tareas = Tarea::where('estado', 'activa')->get();
-        $datos = ['sectores' => $sectores, 'tareas' => $tareas];
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['sectores' => $sectores, 'tareas' => $tareas, 'incidencias' => $incidencias];
 
         return view('formularios.crearEmpleado')->with('datos', $datos);
     }
@@ -79,7 +82,8 @@ class EmpleadosController extends Controller
         $empleado = User::find($id);
         $sector = Sector::where('id', $empleado->sector_id)->first();
         $tarea = Tarea::where('id', '=', $empleado->tarea_id)->first();
-        $datos = ['empleado' => $empleado, 'sector' => $sector, 'tarea' => $tarea];
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['empleado' => $empleado, 'sector' => $sector, 'tarea' => $tarea, 'incidencias' => $incidencias];
 
         return view('empleados.datosEmpleado')->with('datos', $datos);
     }
@@ -89,11 +93,15 @@ class EmpleadosController extends Controller
         $sector = Sector::where('id', $empleado->sector_id)->first();
         $empleadosSector = User::where('sector_id', $sector->id)->get();
         $tarea = Tarea::where('id', '=', $empleado->tarea_id)->first();
+        $tareas = DB::table('tareas')->paginate(10);
+        $incidencias = Incidencia::where('estado', 0)->get();
         $datos = [
             'empleado' => $empleado,
             'sector' => $sector, 
             'tarea' => $tarea, 
-            'empleadosSector' => $empleadosSector
+            'empleadosSector' => $empleadosSector,
+            'tareas' => $tareas,
+            'incidencias' => $incidencias
         ];
         
         return view('empleados.indexEmpleado')->with('datos', $datos);
@@ -109,7 +117,8 @@ class EmpleadosController extends Controller
         $empleado = User::find($id);
         $sectores = Sector::all();
         $tareas = Tarea::where('estado', 'activa')->get();
-        $datos = ['empleado' => $empleado, 'sectores' => $sectores, 'tareas' => $tareas];
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['empleado' => $empleado, 'sectores' => $sectores, 'tareas' => $tareas, 'incidencias' => $incidencias];
         return view('formularios.actualizarEmpleado')->with('datos', $datos);
     }
 

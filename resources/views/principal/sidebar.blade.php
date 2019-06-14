@@ -4,7 +4,7 @@
             <h2 class="mb-0">
                 <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#empleados"
                     aria-expanded="true" aria-controls="empleados">
-                    Empleados
+                    <i class="fas fa-angle-down mr-2"></i>Empleados
                 </button>
             </h2>
         </div>
@@ -13,7 +13,8 @@
             <div class="card-body">
                 <ul class="list-group">
                     <li class="list-item"><a href="/administracion/empleados">Ver empleados</a></li>
-                    <li class="list-item"><a href="/administracion/empleados/empleado/create">Dar de alta un nuevo empleado</a></li>
+                    <li class="list-item"><a href="/administracion/empleados/empleado/create">Dar de alta un nuevo
+                            empleado</a></li>
                 </ul>
             </div>
         </div>
@@ -23,13 +24,13 @@
             <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#tareas"
                     aria-expanded="false" aria-controls="tareas">
-                    Tareas
+                    <i class="fas fa-angle-down mr-2"></i>Tareas
                 </button>
             </h2>
         </div>
         <div id="tareas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
             <div class="card-body">
-                    <li class="list-item"><a href="/administracion/tareas/tarea/create">Añadir nueva tarea</a></li>
+                <li class="list-item"><a href="/administracion/tareas/tarea/create">Añadir nueva tarea</a></li>
             </div>
         </div>
     </div>
@@ -38,7 +39,7 @@
             <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#fincas"
                     aria-expanded="false" aria-controls="fincas">
-                    Fincas
+                    <i class="fas fa-angle-down mr-2"></i>Fincas
                 </button>
             </h2>
         </div>
@@ -54,28 +55,13 @@
             <h2 class="mb-0">
                 <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#sectores"
                     aria-expanded="false" aria-controls="sectores">
-                    Sectores
+                    <i class="fas fa-angle-down mr-2"></i>Sectores
                 </button>
             </h2>
         </div>
         <div id="sectores" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
             <div class="card-body">
                 <li class="list-item"><a href="/administracion/sectores/sector/create">Añadir nuevo sector</a></li>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <div class="card-header" id="headingThree">
-            <h2 class="mb-0">
-                <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#incidencias"
-                    aria-expanded="false" aria-controls="incidencias">
-                    Incidencias
-                </button>
-            </h2>
-        </div>
-        <div id="incidencias" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
-            <div class="card-body">
-                <li class="list-item"><a href="/administracion/incidencias">Ver incidencias</a></li>
             </div>
         </div>
     </div>

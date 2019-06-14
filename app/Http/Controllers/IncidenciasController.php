@@ -15,7 +15,9 @@ class IncidenciasController extends Controller
      */
     public function index()
     {
-        //
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['incidencias' => $incidencias];
+        return view('administrador.incidencias')->with('datos', $datos);
     }
 
     /**
@@ -78,7 +80,13 @@ class IncidenciasController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $incidencia = Incidencia::find($id);
+        
+        if ($incidencia->estado == 0) {
+            $incidencia->estado = $request->input('estado');
+        }
+        $incidencia->save();
+        return redirect('/administracion');
     }
 
     /**

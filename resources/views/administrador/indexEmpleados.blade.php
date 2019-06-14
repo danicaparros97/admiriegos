@@ -16,17 +16,17 @@
             </tr>
         </thead>
         <tbody>
-            @foreach ($empleados as $empleado)
+            @foreach ($datos['empleados'] as $empleado)
                 <tr>
                     <td>{{ $empleado->nombre }}</td>
                     <td>{{ $empleado->apellidos }}</td>
                     <td>{{ $empleado->dni }}</td>
                     <td>{{ $empleado->telefono }}</td>
                     <td>{{ $empleado->rol }}</td>
-                    <td>{{ $empleado->sector_id }}</td>
+                    <td>{{ $empleado->sector->nombre  }}</td>
                     <td>{{ $empleado->email }}</td>
-                    <td><a class="btn btn-primary" href="/administracion/empleados/empleado/edit/{{ $empleado->id }}" role="button">Editar información</i></a></td>
-                    <td><a class="btn btn-primary" href="/administracion/empleados/empleado/destroy/{{ $empleado->id }}" role="button">Dar de baja</a></td>
+                    <td><a class="btn boton" href="/administracion/empleados/empleado/edit/{{ $empleado->id }}" role="button">Editar información</i></a></td>
+                    <td><a class="btn boton" href="/administracion/empleados/empleado/destroy/{{ $empleado->id }}" role="button">Dar de baja</a></td>
                 </tr>
             @endforeach
         </tbody>
@@ -34,6 +34,6 @@
 @endsection
 @section('paginador')
 <div class="paginador">
-    {{ $empleados->links() }}
+    {{ $datos['empleados']->links() }}
 </div>
 @endsection

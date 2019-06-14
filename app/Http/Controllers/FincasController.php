@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Finca;
-
+use App\Incidencia;
 class FincasController extends Controller
 {
     /**
@@ -14,8 +14,10 @@ class FincasController extends Controller
      */
     public function index()
     {
-        $fincas = Finca::all();
-        return view('administrador.fincas')->with('fincas', $fincas);
+        $fincas = Finca::paginate(10);
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['fincas' => $fincas, 'incidencias' => $incidencias];
+        return view('administrador.fincas')->with('datos', $datos);
     }
 
     /**
@@ -24,8 +26,10 @@ class FincasController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function create()
-    {
-        return view('formularios.crearFinca');
+    {   
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['incidencias' => $incidencias];
+        return view('formularios.crearFinca')->with('datos', $datos);
     }
 
     /**
@@ -61,8 +65,9 @@ class FincasController extends Controller
     public function edit($id)
     {
         $finca = Finca::find($id);
-
-        return view('formularios.actualizarFinca')->with('finca', $finca);
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['finca' => $finca, 'incidencias' => $incidencias];
+        return view('formularios.actualizarFinca')->with('datos', $datos);
     }
 
     /**

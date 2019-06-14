@@ -6,16 +6,14 @@
             <tr>
                 <th>Finca</th>
                 <th>Localización</th>
-                <th>Editar</th>
                 <th>Sectores</th>
             </tr>
         </thead>
         <tbody>
-            @foreach ($fincas as $finca)
+            @foreach ($datos['fincas'] as $finca)
             <tr>
                 <td>{{ $finca->nombre }}</td> 
                 <td>{{ $finca->localizacion }}</td> 
-                <td><a href="/administracion/fincas/finca/edit/{{ $finca->id }}" class="btn btn-primary">Editar</a></td>
                 @foreach ($finca->sectores as $sector)
                 <td>{{ $sector->nombre }}</td>
                 @endforeach

@@ -1,6 +1,7 @@
 @extends('principal.index')
 @section('contenido')
-<div class="container">
+<div class="container formulario">
+    <h1 class="h1 text-center mt-2">Editar empleado</h1>
     <form action="/administracion/empleados/empleado/update/{{ $datos['empleado']->id }}" method="post">
         @csrf
         <div class="form-group">
@@ -50,7 +51,11 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Añadir</button>
+        <div class="row justify-content-between">
+            <div class="col-3"></div>
+            <button type="submit" class="btn boton col-3">Añadir</button>
+            <div class="col-3"></div>
+        </div>
     </form>
 </div>
 @endsection

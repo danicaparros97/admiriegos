@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Tarea;
 use App\User;
+use App\Incidencia;
 
 class TareasController extends Controller
 {
@@ -16,9 +17,10 @@ class TareasController extends Controller
      */
     public function index()
     {
-        $tareas = DB::table('tareas')->paginate(10);
-
-        return view('administrador.tareas')->with('tareas', $tareas);
+        $tareas = Tarea::paginate(10);
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['tareas' => $tareas, 'incidencias' => $incidencias];
+        return view('administrador.tareas')->with('datos', $datos);
     }
 
     /**
@@ -28,7 +30,9 @@ class TareasController extends Controller
      */
     public function create()
     {
-        return view('formularios.crearTarea');
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['incidencias' => $incidencias];
+        return view('formularios.crearTarea')->with('datos', $datos);
     }
 
     /**

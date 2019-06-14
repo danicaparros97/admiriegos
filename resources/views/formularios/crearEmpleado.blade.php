@@ -1,6 +1,7 @@
 @extends('principal.index')
 @section('contenido')
-<div class="container">
+<div class="container formulario">
+    <h1 class="h1 text-center mt-2">Nuevo empleado</h1>
     <form action="/administracion/empleados/empleado/store" method="post">
         @csrf
         <div class="form-group">
@@ -14,11 +15,11 @@
 
         <div class="form-group">
             <label for="dni">DNI</label>
-            <input type="text" class="form-control" name="dni" required>
+            <input type="text" class="form-control" name="dni" id="dni" required>
         </div>
         <div class="form-group">
             <label for="email">Teléfono</label>
-            <input type="text" class="form-control" name="telefono" minlength="9" maxlength="9" required>
+            <input type="text" class="form-control" name="telefono" id="telefono" minlength="9" maxlength="9" required>
         </div>
         <div class="form-group">
             <label for="rol">Rol</label>
@@ -44,7 +45,11 @@
                 @endforeach
             </select>
         </div>
-        <button type="submit" class="btn btn-primary">Añadir</button>
+        <div class="row justify-content-between">
+            <div class="col-3"></div>
+            <button type="submit" class="btn boton col-3" id="add">Añadir</button>
+            <div class="col-3"></div>
+        </div>
     </form>
 </div>
 @endsection

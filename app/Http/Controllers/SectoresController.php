@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use App\Sector;
 use App\Finca;
-
+use App\Incidencia;
 class SectoresController extends Controller
 {
     /**
@@ -28,8 +28,9 @@ class SectoresController extends Controller
     public function create()
     {
         $fincas = Finca::all();
-
-        return view('formularios.crearSector')->with('fincas', $fincas);
+        $incidencias = Incidencia::where('estado', 0)->get();
+        $datos = ['fincas' => $fincas, 'incidencias' => $incidencias];
+        return view('formularios.crearSector')->with('datos', $datos);
     }
 
     /**

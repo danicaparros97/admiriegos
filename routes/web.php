@@ -29,7 +29,9 @@ Route::prefix('/administracion')->middleware('admin')->group(function(){
         Route::get('empleado/destroy/{id_empleado}',  'EmpleadosController@destroy');//Elimina al empleado de la bbdd
         Route::get('empleado/edit/{id_empleado}', 'EmpleadosController@edit');//Muestra el formulario con los datos del empleado pasados como parametro para editarlo
         Route::post('empleado/update/{id_empleado}', 'EmpleadosController@update');//Coge los datos del formulario y los inserta en la bbdd
-        Route::get('empleado/show/{id_empleado}', 'EmpleadosController@show');
+        Route::get('empleado/show/{id_empleado}', 'EmpleadosController@show');//Muestra los datos del empleado
+       
+
 
     });
 
@@ -59,12 +61,6 @@ Route::prefix('/administracion')->middleware('admin')->group(function(){
         Route::post('tarea/store', 'TareasController@store');//Coge los datos del formulario y los inserta en la bbdd
         Route::get('tarea/finalizar/{id_tarea}',  'TareasController@finalizarTarea');//Elimina al empleado de la bbdd
     });
-    //Grupo de rutas para 
-    Route::prefix('incidencias')->group(function(){
-        Route::get('/', 'IncidenciasController@index');//Se muestran todas las incidencias
-        Route::get('incidencia/edit', 'IncidenciasController@edit');//Se muestra el formulario para editar una incidencia
-        Route::post('incidencia/update', 'IncidenciasController@update');//Coge los datos del formulario para actualizar la incidencia
-    });
 
 
 });
@@ -72,6 +68,7 @@ Route::prefix('/administracion')->middleware('admin')->group(function(){
 Route::prefix('/empleado')->group(function(){
     Route::get('/', 'EmpleadosController@indexEmpleado');
     Route::get('show/{id_empleado}', 'EmpleadosController@show');
+    Route::get('edit/id_empleado', 'EmpleadosController@edit');
     Route::get('incidencia', 'IncidenciasController@create');
     Route::post('incidencia/store', 'IncidenciasController@store');
 
