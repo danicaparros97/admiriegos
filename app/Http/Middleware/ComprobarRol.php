@@ -8,7 +8,7 @@ use Closure;
 class ComprobarRol
 {
     /**
-     * Handle an incoming request.
+     * Comprueba si el usuario logeado es administrador, si lo es, lo redirige a /administracion, si no, lo redirige a /empleado
      *
      * @param  \Illuminate\Http\Request  $request
      * @param  \Closure  $next

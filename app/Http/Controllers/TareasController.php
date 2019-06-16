@@ -11,32 +11,37 @@ use App\Incidencia;
 class TareasController extends Controller
 {
     /**
-     * Display a listing of the resource.
+     * Muestra todas las tareas 
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
+        //Busca las tareas y las pagina
         $tareas = Tarea::paginate(10);
+        //Busca las incidencias con estado sin resolver
         $incidencias = Incidencia::where('estado', 0)->get();
         $datos = ['tareas' => $tareas, 'incidencias' => $incidencias];
+        //Devuelve una vista con los datos pasados mediante el metodo with
         return view('administrador.tareas')->with('datos', $datos);
     }
 
     /**
-     * Show the form for creating a new resource.
+     * Muestra el formulario para insertar una tarea en la base de datos
      *
      * @return \Illuminate\Http\Response
      */
     public function create()
     {
+        //Busca las incidencias con estado sin resolver
         $incidencias = Incidencia::where('estado', 0)->get();
         $datos = ['incidencias' => $incidencias];
+        //Devuelve la vista pasandole los datos mediante el metodo with
         return view('formularios.crearTarea')->with('datos', $datos);
     }
 
     /**
-     * Store a newly created resource in storage.
+     * Inserta en la tabla tareas una tarea con los valores recogidos del metodo create
      *
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
@@ -45,15 +50,25 @@ class TareasController extends Controller
     {
         $tarea = Tarea::create($request->all());
 
+        //Redirige a la ruta principal del modulo de administracion
         return redirect('/administracion');
     }
 
+    /**
+     * Metodo que se encarga de cambiar el estado de la tarea pasada como parametro
+     * 
+     * @param int $id
+     */
     public function finalizarTarea($id){
+
+        //Busca una tarea mediante el id
         $tarea = Tarea::find($id);
+        //Comprueba el estado de la tarea, si es activa, lo cambia a finalizada
         if ($tarea->estado == 'activa') {
             $tarea->estado = 'finalizada';
         }
         $tarea->save();
+        //Redirige a la ruta principal del modulo de administracion
         return redirect('/administracion');
     }
 

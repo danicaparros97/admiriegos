@@ -10,26 +10,23 @@ class User extends Authenticatable
 {
     use Notifiable;
 
+    //Nombre de la tabla
     protected $table = 'empleados';
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
+    //Campos de la tabla que se podran modificar
     protected $fillable = [
         'nombre', 'apellidos', 'dni', 'telefono','rol', 'sector_id', 'tarea_id', 'email', 'password'
     ];
-
+    //Funcion que devolvera el sector al que pertenece el empleado
     public function sector()
     {
         return $this->belongsTo('App\Sector');
     }
-
+    //Funcion que devolvera las incidencias que tiene un empleado
     public function incidencias()
     {
         return $this->hasMany('App\Incidencia');
     }
-
+    //Funcion que devolvera la tarea a la que pertenece el empleado
     public function tarea(){
         return $this->belongsTo('App\Tarea');
     }

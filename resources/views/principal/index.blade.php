@@ -156,6 +156,7 @@
     <script type="text/javascript" src="{{URL::asset('js/scripts.js')}}"></script>
     <script>
         $(document).ready(function () {
+            //Al pulsar en el boton de añadir del formulario, se comprobara que la fecha inicio no es mayor que la fecha de fin, si lo es, aparecera una alerta indicando que la fecha de inicio introducida es incorrecta.
             $('#add').on('click', function () {
                 if ($('#fecha_inicio').val() > $('#fecha_fin').val()) {
                     Swal.fire({
@@ -164,6 +165,7 @@
                         text: 'La fecha de fin no puede ser menor a la fecha de inicio',
                     })
                 }
+                //Se comprueba mediante una expresion regular que el dni introducido no es incorrecto, si lo es, aparecera una alerta indicando que el dni introducido no es correcto.
                 var patron = /^\d{8}[a-zA-Z]{1}$/g;
                 var result = patron.test($('#dni').val());
                 if (result == false) {
@@ -173,6 +175,7 @@
                         text: 'El dni introducido no es correcto',
                     })
                 }
+                //Se comprueba mediante una expresion regular que el telefono introducido no es incorrecto, si lo es, aparecera una alerta indicando qeu el dni introducido no es correcto.
                 var patron = /^[\d]{3}[-]*([\d]{2}[-]*){2}[\d]{2}$/g;
                 var result = patron.test($("#telefono").val());
                 if (result == false) {

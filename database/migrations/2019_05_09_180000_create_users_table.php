@@ -18,7 +18,7 @@ class CreateUsersTable extends Migration
             $table->string('nombre');
             $table->string('apellidos');
             $table->string('dni')->unique();
-            $table->string('telefono');
+            $table->string('telefono')->unique();
             $table->string('rol');
 
             $table->unsignedBigInteger('sector_id');
