@@ -13,15 +13,15 @@ class EmpleadosSeeder extends Seeder
     public function run()
     {
         User::create([
-            "nombre" => "Juan Luis",
-            "apellidos" => "García Perez",
-            "dni" => "21655487E",
-            "telefono" => "654987123",
+            "nombre" => "Daniel",
+            "apellidos" => "Caparros Caparros",
+            "dni" => "45605182T",
+            "telefono" => "654698652",
             "rol" => "administrador",
             "sector_id" => 1,
             "tarea_id" => 1,
-            "email" => "juan.luis.garcia.perez@admiriegos.com",
-            "password" => Hash::make("Jl15052019")
+            "email" => "administrador@admiriegos.com",
+            "password" => Hash::make("admin1234")
         ]);
     }
 }
